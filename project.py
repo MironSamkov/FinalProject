@@ -53,7 +53,7 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 #, height=6
 st.pyplot()
 
-with open("admin_level_4.shp", encoding='CP1251') as o:
+with open("admin_level_4.shp", encoding='ISO8859-1') as o:
     russia_adm4 = gpd.read_file(o)
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
 st.write(russia_adm4.crs)
