@@ -9,3 +9,5 @@ bs4
 xml-python
 fiona
 scikit-learn
+networkx
+pyvis
