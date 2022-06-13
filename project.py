@@ -53,7 +53,7 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 st.pyplot()
 
 entrypoint = "https://nominatim.openstreetmap.org/search"
-params = {'county': RegionResults['Region'][0],
+params = {'state': RegionResults['Region'][0],
           'format': 'geojson'}
 r = requests.get(entrypoint, params=params)
 st.write(r)
