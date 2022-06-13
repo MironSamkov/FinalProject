@@ -12,6 +12,7 @@ import requests
 import geopandas as gpd
 from bs4 import BeautifulSoup
 import xml
+import fiona
 
 st.title('Визуализация выборов')
 
@@ -56,8 +57,8 @@ st.pyplot()
 
 
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='ISO8859-1')
-with open("admin_level_4.shp", encoding='ISO8859-1') as o:
-    russia_adm4 = gpd.read_file(o)
+with fiona.open("admin_level_4.shp", encoding='CP1251') as shp:
+    russia_adm4 = gpd.read_file(shp)
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
 st.write(russia_adm4.crs)
 map4 = russia_adm4.to_crs("ESRI:102012")
