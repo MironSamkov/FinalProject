@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 import lxml
 
 
+
 st.title('Визуализация выборов')
 
 with open('Республика Адыгея (Адыгея).csv', encoding='utf8') as o:
