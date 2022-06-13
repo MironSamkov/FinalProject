@@ -15,6 +15,9 @@ import xml
 import fiona
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
+import networkx as nx
+from pyvis.network import Network
+import streamlit.components.v1 as components
 
 
 st.title('Визуализация выборов')
@@ -75,7 +78,7 @@ plt.plot(x["Turnout"], reg.predict(x), color="C1", lw=2)
 
 st.pyplot()
 
-
+#Регулярные выражения
 df_adv = pd.get_dummies(df, columns = ["Year", "Subregion"], drop_first = True)
 years = df_adv.filter(regex=r'^Year*').columns
 subregions = df_adv.filter(regex=r'^Subregion*').columns
@@ -85,6 +88,43 @@ reg_fe.fit(df_adv[["Turnout"] + list(years) + list(subregions)], df_adv["Percent
 st.write(reg_fe.coef_[1])
 st.write(reg_fe.intercept_)
 
+
+#Граф
+
+moscow = pd.read_csv('город Москва 2018.csv', encoding='utf-8')
+
+net = Network()
+
+for i in set(moscow['Subregion']):
+    net.add_node(i)
+    RegionNodes = moscow.iloc[moscow.index[moscow['Subregion'] == i].tolist()]['StationID']
+    net.add_nodes(RegionNodes)
+    net.add_edges(i, RegionNodes)
+
+neighbor_map = net.get_adj_list()
+
+for node in net.nodes:
+    node['title'] += ' Neighbors:<br>' + '<br>'.join(neighbor_map[node['id']])
+    node['value'] = len(neighbor_map[node['id']])
+    
+
+fig, ax = plt.subplots()
+    pos = nx.kamada_kawai_layout(net)
+    nx.draw(net, pos, with_labels=True)
+    st.pyplot(fig)
+
+#net.add_nodes(moscow['StationID'])
+
+
+"""
+st.sidebar.title('Choose your favorite Graph')
+option=st.sidebar.selectbox('select graph',('Simple','Karate', 'GOT'))
+physics=st.sidebar.checkbox('add physics interactivity?')
+got.simple_func(physics)
+
+nodes = 
+st.network(nodes, edges)
+"""
 '''
 with open("https://www.dropbox.com/s/cgcyo11ua5md9r8/admin_level_8.geojson", encoding = 'utf-8') as f:
     a = json.load(f)
