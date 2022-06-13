@@ -9,7 +9,7 @@ import plotly.graph_objs as go
 from shapely.geometry import Polygon
 import numpy as np
 import requests
-import geopandas
+import geopandas as gpd
 from bs4 import BeautifulSoup
 import xml
 
