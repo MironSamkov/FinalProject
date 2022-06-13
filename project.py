@@ -55,12 +55,12 @@ st.pyplot()
 entrypoint = "https://nominatim.openstreetmap.org/search"
 for i in set(RegionResults['Subregion']):
     st.write(i)
-    params = {'city_district': i,
+    params = {'q': i,
               'format': 'geojson'}
     r = requests.get(entrypoint, params=params)
     st.write(r)
     st.write(r.text)
-    Sub = r.geojson()
+    Sub = r.json()
     SubregionPoly = geopandas.GeoDataFrame.from_features(Sub)
     st.write(SubregionPoly)
 
