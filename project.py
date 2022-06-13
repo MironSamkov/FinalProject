@@ -55,14 +55,14 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 st.pyplot()
 
 
-'''
-with open("https://drive.google.com/file/d/1is_oe9o6S3EaDf0hyOxzT1_QJGfhaJUX/view?usp=sharing", encoding = 'utf-8') as f:
+
+with open(https://www.dropbox.com/s/cgcyo11ua5md9r8/admin_level_8.geojson?dl=0, encoding = 'utf-8') as f:
     a = json.load(f)
 df = pd.json_normalize(a['features'])[['id', 'name', 'geometry.coordinates']]
 df['geometry.coordinates'] = df['geometry.coordinates'].apply(lambda x: Polygon(x[0][0]))
 
 st.write(df)
-'''
+
 
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='ISO8859-1')
 #russia_adm4 = gpd.read_file("https://drive.google.com/file/d/1is_oe9o6S3EaDf0hyOxzT1_QJGfhaJUX/view?usp=sharing", encoding='CP1251')
