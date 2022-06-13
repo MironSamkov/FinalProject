@@ -84,4 +84,5 @@ for i in set(RegionResults['Subregion']):
     Sub = r.json()
     SubregionPoly = geopandas.GeoDataFrame.from_features(Sub)
     st.write(SubregionPoly)
+    
 """
