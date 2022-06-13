@@ -54,7 +54,7 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 
 st.pyplot()
 
-with open("https://drive.google.com/drive/folders/1oSXWiprQlzyWG9aajsiQAqtLKfca8B1M?usp=sharing/admin_level_8.geojson", encoding = 'utf-8') as f:
+with open("https://drive.google.com/file/d/1is_oe9o6S3EaDf0hyOxzT1_QJGfhaJUX/view?usp=sharing", encoding = 'utf-8') as f:
     a = json.load(f)
 df = pd.json_normalize(a['features'])[['id', 'name', 'geometry.coordinates']]
 df['geometry.coordinates'] = df['geometry.coordinates'].apply(lambda x: Polygon(x[0][0]))
@@ -63,7 +63,7 @@ st.write(df)
 
 
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='ISO8859-1')
-#russia_adm4 = gpd.read_file("https://drive.google.com/drive/folders/1oSXWiprQlzyWG9aajsiQAqtLKfca8B1M?usp=sharing/admin_level_4.geojson", encoding='CP1251')
+#russia_adm4 = gpd.read_file("https://drive.google.com/file/d/1is_oe9o6S3EaDf0hyOxzT1_QJGfhaJUX/view?usp=sharing", encoding='CP1251')
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
 #st.write(russia_adm4.crs)
 #map4 = russia_adm4.to_crs("ESRI:102012")
