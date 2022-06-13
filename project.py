@@ -183,7 +183,7 @@ with open('Адм-территориальные границы РФ в форм
 df = pd.json_normalize(Subregions['features'])[['id', 'name', 'geometry.coordinates']]
 df['geometry.coordinates'] = df['geometry.coordinates'].apply(lambda x: Polygon(x[0][0]))
 """
-
+"""
 entrypoint = "https://nominatim.openstreetmap.org/search"
 params = {'q': set(RegionResults['Subregion']),
           'format': 'geojson'}
@@ -191,6 +191,7 @@ r = requests.get(entrypoint, params=params)
 st.write(r)
 SubregionPoly = geopandas.GeoDataFrame.from_features(r)
 st.write(SubregionPoly)
+"""
 #Poly = go.Figure(df['geometry.coordinates'][5])
 #st.plotly_chart(Poly)
 
