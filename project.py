@@ -55,7 +55,7 @@ st.pyplot()
 
 with open("admin_level_4.shp", encoding='CP1251') as o:
     russia_adm4 = gpd.read_file(o)
-#russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='CP1251')
+#russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
 st.write(russia_adm4.crs)
 map4 = russia_adm4.to_crs("ESRI:102012")
 fig4 = map4.plot()
