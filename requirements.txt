@@ -8,3 +8,5 @@ geojson
 bs4
 xml-python
 fiona
+sklearn
+re
