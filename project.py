@@ -13,6 +13,9 @@ import geopandas as gpd
 from bs4 import BeautifulSoup
 import xml
 import fiona
+from sklearn.linear_model import LinearRegression
+import re
+import matplotlib.pyplot as plt
 
 
 st.title('Визуализация выборов')
@@ -54,15 +57,43 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 
 st.pyplot()
 
+#Машинное обучение: линейная регрессия
+
+df_2008 = pd.read_csv('Ненецкий автономный округ 2008.csv', encoding='utf-8')
+df_2012 = pd.read_csv('Ненецкий автономный округ 2012.csv', encoding='utf-8')
+df_2018 = pd.read_csv('Ненецкий автономный округ 2018.csv', encoding='utf-8')
+
+df = pd.concat([df_2008, df_2012, df_2018], keys = [2008, 2012, 2018])
+df = df.reset_index(level=[0,1])
+df = df.drop(columns = ["level_1", "Unnamed: 0"])
+df = df.rename(columns = {"level_0": "Year"})
+reg = LinearRegression()
+st.write(reg.fit(df[["Turnout"]], df["Percentage"]))
+
+fig4 = df.plot.scatter(x="Turnout", y="Percentage")
+x = pd.DataFrame(dict(Turnout=np.linspace(0, 1)))
+plt.plot(x["Turnout"], reg.predict(x), color="C1", lw=2)
+
+st.pyplot()
 
 
+df_adv = pd.get_dummies(df, columns = ["Year", "Subregion"], drop_first = True)
+years = df_adv.filter(regex=r'^Year*').columns
+subregions = df_adv.filter(regex=r'^Subregion*').columns
+reg_fe = LinearRegression()
+reg_fe.fit(df_adv[["Turnout"] + list(years) + list(subregions)], df_adv["Percentage"])
+
+st.write(reg_fe.coef_[1])
+st.write(reg_fe.intercept_)
+
+'''
 with open("https://www.dropbox.com/s/cgcyo11ua5md9r8/admin_level_8.geojson", encoding = 'utf-8') as f:
     a = json.load(f)
 df = pd.json_normalize(a['features'])[['id', 'name', 'geometry.coordinates']]
 df['geometry.coordinates'] = df['geometry.coordinates'].apply(lambda x: Polygon(x[0][0]))
 
 st.write(df)
-
+'''
 
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='ISO8859-1')
 #russia_adm4 = gpd.read_file("https://drive.google.com/file/d/1is_oe9o6S3EaDf0hyOxzT1_QJGfhaJUX/view?usp=sharing", encoding='CP1251')
