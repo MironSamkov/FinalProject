@@ -54,6 +54,7 @@ st.pyplot()
 
 entrypoint = "https://nominatim.openstreetmap.org/search"
 for i in set(RegionResults['Subregion']):
+    st.write(i)
     params = {'q': i,
               'format': 'geojson'}
     r = requests.get(entrypoint, params=params)
