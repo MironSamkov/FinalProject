@@ -137,7 +137,7 @@ if Region != 'Регион не выбран':
         contourf_kwargs={"alpha": 0.5, "levels": 30},
     )
 """
-with open('D:/Miron/Республика Адыгея (Адыгея).csv', encoding='utf8') as o:
+with open('Республика Адыгея (Адыгея).csv', encoding='utf8') as o:
     RegionResults = pd.read_csv(o)
 st.write(RegionResults)
 fig1 = ff.create_distplot([RegionResults[a] for a in ['Turnout', 'Percentage']],
@@ -179,7 +179,7 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 #, height=6
 st.pyplot()
 """
-with open('D:/Miron/Адм-территориальные границы РФ в формате GeoJSON/admin_level_8.geojson', encoding='utf-8') as f:
+with open('Адм-территориальные границы РФ в формате GeoJSON/admin_level_8.geojson', encoding='utf-8') as f:
     Subregions = json.load(f)
 df = pd.json_normalize(Subregions['features'])[['id', 'name', 'geometry.coordinates']]
 df['geometry.coordinates'] = df['geometry.coordinates'].apply(lambda x: Polygon(x[0][0]))
