@@ -12,8 +12,6 @@ import requests
 import geopandas
 from bs4 import BeautifulSoup
 import xml
-from pyrosm import OSM
-from pyrosm import get_data
 
 
 st.title('Визуализация выборов')
@@ -56,7 +54,12 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 #, height=6
 st.pyplot()
 
+russia_adm6 = gpd.read_file("admin_level_6.shp", encoding='CP1251')
+map = russia_adm6.to_crs("ESRI:102012")
+fig4 = map.plot()
+st.pyplot()
 
+"""
 fp = get_data("moscow")
 osm = OSM(fp)
 boundaries = osm.get_boundaries()
@@ -68,9 +71,6 @@ bbox_geom = moscow_center['geometry'].values[0]
 osm = OSM(fp, bounding_box=bbox_geom)
 
 
-
-
-"""
 entrypoint = "https://nominatim.openstreetmap.org/search"
 params = {'state': RegionResults['Region'][0],
           'format': 'xml',
