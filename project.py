@@ -13,7 +13,6 @@ import geopandas as gpd
 from bs4 import BeautifulSoup
 import xml
 
-
 st.title('Визуализация выборов')
 
 with open('Республика Адыгея (Адыгея).csv', encoding='utf8') as o:
