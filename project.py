@@ -98,8 +98,9 @@ net = Network()
 for i in set(moscow['Subregion']):
     net.add_node(i)
     RegionNodes = moscow.iloc[moscow.index[moscow['Subregion'] == i].tolist()]['StationID']
+    ii = [i]*len(RegionNodes)
     net.add_nodes(RegionNodes)
-    net.add_edges(i, RegionNodes)
+    net.add_edges(zip(ii, RegionNodes))
 
 neighbor_map = net.get_adj_list()
 
@@ -112,77 +113,3 @@ fig, ax = plt.subplots()
 pos = nx.kamada_kawai_layout(net)
 nx.draw(net, pos, with_labels=True)
 st.pyplot(fig)
-
-#net.add_nodes(moscow['StationID'])
-
-
-"""
-st.sidebar.title('Choose your favorite Graph')
-option=st.sidebar.selectbox('select graph',('Simple','Karate', 'GOT'))
-physics=st.sidebar.checkbox('add physics interactivity?')
-got.simple_func(physics)
-
-nodes = 
-st.network(nodes, edges)
-"""
-'''
-with open("https://www.dropbox.com/s/cgcyo11ua5md9r8/admin_level_8.geojson", encoding = 'utf-8') as f:
-    a = json.load(f)
-df = pd.json_normalize(a['features'])[['id', 'name', 'geometry.coordinates']]
-df['geometry.coordinates'] = df['geometry.coordinates'].apply(lambda x: Polygon(x[0][0]))
-
-st.write(df)
-'''
-
-#russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='ISO8859-1')
-#russia_adm4 = gpd.read_file("https://drive.google.com/file/d/1is_oe9o6S3EaDf0hyOxzT1_QJGfhaJUX/view?usp=sharing", encoding='CP1251')
-#russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
-#st.write(russia_adm4.crs)
-#map4 = russia_adm4.to_crs("ESRI:102012")
-#fig4 = map4.plot()
-#st.pyplot()
-
-"""
-fp = get_data("moscow")
-osm = OSM(fp)
-boundaries = osm.get_boundaries()
-fig4 = boundaries.plot()
-st.pyplot()
-
-moscow_center = boundaries[boundaries["name"] == "Центральный административный округ"]
-bbox_geom = moscow_center['geometry'].values[0]
-osm = OSM(fp, bounding_box=bbox_geom)
-
-
-entrypoint = "https://nominatim.openstreetmap.org/search"
-params = {'state': RegionResults['Region'][0],
-          'format': 'xml',
-          'polygon_geojson': 1
-         }
-r = requests.get(entrypoint, params=params)
-
-st.write(r)
-st.write(r.text)
-soup = BeautifulSoup(r.text, features='xml')
-soup1 = soup.find("place").find("Polygon").find("coordinates")
-st.write(soup1.prettify())
-
-#RegionJson = r.json()
-#RegionPoly = geopandas.GeoDataFrame.from_features(RegionJson)
-#st.write(RegionPoly)
-
-for i in set(RegionResults['Subregion']):
-    st.write(i)
-    j = i
-    if str(i[-2:])=='ая':
-        j = i[:-2]+'ий'
-    st.write(j)
-    params = {'q': j,
-              'format': 'geojson'}
-    r = requests.get(entrypoint, params=params)
-    st.write(r)
-    st.write(r.text)
-    Sub = r.json()
-    SubregionPoly = geopandas.GeoDataFrame.from_features(Sub)
-    st.write(SubregionPoly)
-"""
