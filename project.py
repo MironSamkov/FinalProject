@@ -18,6 +18,7 @@ import re
 import matplotlib.pyplot as plt
 
 
+
 st.title('Визуализация выборов')
 
 with open('Республика Адыгея (Адыгея).csv', encoding='utf8') as o:
