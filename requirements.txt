@@ -6,4 +6,4 @@ requests==2.28.0
 geopandas==0.10.2
 geojson
 bs4
-xml
+lxml
