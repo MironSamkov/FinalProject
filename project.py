@@ -61,7 +61,7 @@ params = {'state': RegionResults['Region'][0],
 r = requests.get(entrypoint, params=params)
 
 st.write(r)
-soup = BeautifulSoup(r.text, features='xml')
+soup = BeautifulSoup(r.text)
 st.write(soup.find("coordinates"))
 #st.write(soup.prettify())
 
