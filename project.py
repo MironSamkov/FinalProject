@@ -11,6 +11,7 @@ import numpy as np
 import requests
 import geopandas
 from bs4 import BeautifulSoup
+import xml
 
 
 st.title('Визуализация выборов')
