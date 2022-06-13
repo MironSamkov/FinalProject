@@ -55,7 +55,7 @@ st.pyplot()
 
 
 
-russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='CP1251')
+russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='ISO8859-1')
 #with open("admin_level_4.shp", encoding='ISO8859-1') as o:
 #    russia_adm4 = gpd.read_file(o)
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
