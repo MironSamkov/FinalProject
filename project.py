@@ -66,7 +66,7 @@ st.write(r)
 st.write(r.text)
 soup = BeautifulSoup(r.text, features='xml')
 soup1 = soup.find("place").find("Polygon").find("coordinates")
-st.write(soup1.prettify())
+st.write(soup1.text)
 
 #RegionJson = r.json()
 #RegionPoly = geopandas.GeoDataFrame.from_features(RegionJson)
