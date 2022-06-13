@@ -67,7 +67,7 @@ df = df.reset_index(level=[0,1])
 df = df.drop(columns = ["level_1", "Unnamed: 0"])
 df = df.rename(columns = {"level_0": "Year"})
 reg = LinearRegression()
-st.write(reg.fit(df[["Turnout"]], df["Percentage"]))
+reg.fit(df[["Turnout"]], df["Percentage"])
 
 fig4 = df.plot.scatter(x="Turnout", y="Percentage")
 x = pd.DataFrame(dict(Turnout=np.linspace(0, 1)))
