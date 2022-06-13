@@ -2,6 +2,7 @@ seaborn
 streamlit
 plotly
 json
+geojson
 shapely
 requests
 geopandas
