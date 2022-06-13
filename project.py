@@ -110,9 +110,9 @@ for node in net.nodes:
     
 
 fig, ax = plt.subplots()
-    pos = nx.kamada_kawai_layout(net)
-    nx.draw(net, pos, with_labels=True)
-    st.pyplot(fig)
+pos = nx.kamada_kawai_layout(net)
+nx.draw(net, pos, with_labels=True)
+st.pyplot(fig)
 
 #net.add_nodes(moscow['StationID'])
 
