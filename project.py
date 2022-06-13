@@ -104,9 +104,9 @@ for i in set(moscow['Subregion']):
 
 neighbor_map = net.get_adj_list()
 
-for node in net.nodes:
+#for node in net.nodes:
 #    node['title'] += ' Neighbors:<br>' + '<br>'.join(neighbor_map[node['id']])
-    node['value'] = len(neighbor_map[node['id']])
+#    node['value'] = len(neighbor_map[node['id']])
     
 
 fig, ax = plt.subplots()
