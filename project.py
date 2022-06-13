@@ -4,6 +4,7 @@ import plotly.figure_factory as ff
 import seaborn as sns
 import plotly.express as px
 import json
+import geojson
 import plotly.graph_objs as go
 from shapely.geometry import Polygon
 import numpy as np
@@ -50,4 +51,12 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 
 #, height=6
 st.pyplot()
+
+entrypoint = "https://nominatim.openstreetmap.org/search"
+params = {'q': set(RegionResults['Subregion']),
+          'format': 'geojson'}
+r = requests.get(entrypoint, params=params)
+st.write(r)
+SubregionPoly = geopandas.GeoDataFrame.from_features(r)
+st.write(SubregionPoly)
 
