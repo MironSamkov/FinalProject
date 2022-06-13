@@ -13,7 +13,7 @@ import geopandas as gpd
 from bs4 import BeautifulSoup
 import xml
 import fiona
-from scikit-learn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression
 import re
 import matplotlib.pyplot as plt
 
