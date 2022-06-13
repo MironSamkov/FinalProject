@@ -9,4 +9,3 @@ bs4
 xml-python
 fiona
 scikit-learn
-re
