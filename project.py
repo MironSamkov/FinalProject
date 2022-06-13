@@ -58,6 +58,7 @@ for i in set(RegionResults['Subregion']):
               'format': 'geojson'}
     r = requests.get(entrypoint, params=params)
     st.write(r)
-    SubregionPoly = geopandas.GeoDataFrame.from_features(r)
+    Sub = r.geojson()
+    SubregionPoly = geopandas.GeoDataFrame.from_features(Sub)
     st.write(SubregionPoly)
 
