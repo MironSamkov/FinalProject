@@ -53,10 +53,11 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 st.pyplot()
 
 entrypoint = "https://nominatim.openstreetmap.org/search"
-params = {'q': set(RegionResults['Subregion']),
-          'format': 'geojson'}
-r = requests.get(entrypoint, params=params)
-st.write(r)
-SubregionPoly = geopandas.GeoDataFrame.from_features(r)
-st.write(SubregionPoly)
+for i in set(RegionResults['Subregion']):
+    params = {'q': i,
+              'format': 'geojson'}
+    r = requests.get(entrypoint, params=params)
+    st.write(r)
+    SubregionPoly = geopandas.GeoDataFrame.from_features(r)
+    st.write(SubregionPoly)
 
