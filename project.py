@@ -12,6 +12,7 @@ import requests
 import geopandas as gpd
 from bs4 import BeautifulSoup
 import xml
+#from django.contrib.gis.gdal import DataSource
 
 st.title('Визуализация выборов')
 
@@ -53,8 +54,12 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 #, height=6
 st.pyplot()
 
-with open("admin_level_4.shp", encoding='ISO8859-1') as o:
-    russia_adm4 = gpd.read_file(o)
+
+#ds = DataSource
+
+russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='CP1251')
+#with open("admin_level_4.shp", encoding='ISO8859-1') as o:
+#    russia_adm4 = gpd.read_file(o)
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
 st.write(russia_adm4.crs)
 map4 = russia_adm4.to_crs("ESRI:102012")
