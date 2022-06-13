@@ -58,7 +58,7 @@ st.pyplot()
 
 
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='ISO8859-1')
-russia_adm4 = gpd.read_file("https://drive.google.com/drive/folders/1oSXWiprQlzyWG9aajsiQAqtLKfca8B1M?usp=sharing/admin_level_4.geojson")
+russia_adm4 = gpd.read_file("https://drive.google.com/drive/folders/1oSXWiprQlzyWG9aajsiQAqtLKfca8B1M?usp=sharing/admin_level_4.geojson", encoding='CP1251')
 #russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='Windows-1251')
 st.write(russia_adm4.crs)
 map4 = russia_adm4.to_crs("ESRI:102012")
