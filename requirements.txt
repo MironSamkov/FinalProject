@@ -7,8 +7,8 @@ geopandas==0.10.2
 geojson
 bs4
 xml-python
-Pygeos
-Cython
-Pyrobuf
-Cykhash
-pyrosm
+pygeos
+cython
+pyrobuf
+cykhash
+pyrosm==0.6.1
