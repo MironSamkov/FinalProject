@@ -8,5 +8,5 @@ geojson
 bs4
 xml-python
 fiona
-sklearn
+scikit-learn
 re
