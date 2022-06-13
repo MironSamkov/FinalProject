@@ -10,6 +10,7 @@ from shapely.geometry import Polygon
 import numpy as np
 import requests
 import geopandas
+from bs4 import BeautifulSoup
 
 
 st.title('Визуализация выборов')
@@ -54,13 +55,19 @@ st.pyplot()
 
 entrypoint = "https://nominatim.openstreetmap.org/search"
 params = {'state': RegionResults['Region'][0],
-          'format': 'geojson'}
+          'format': 'xml',
+          'polygon_kml': 1
+         }
 r = requests.get(entrypoint, params=params)
+
 st.write(r)
 st.write(r.text)
-RegionJson = r.json()
-RegionPoly = geopandas.GeoDataFrame.from_features(RegionJson)
-st.write(RegionPoly)
+soup = BeautifulSoup(r.text, features='xml')
+st.write(soup.prettify())
+
+#RegionJson = r.json()
+#RegionPoly = geopandas.GeoDataFrame.from_features(RegionJson)
+#st.write(RegionPoly)
 """
 for i in set(RegionResults['Subregion']):
     st.write(i)
