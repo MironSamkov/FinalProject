@@ -56,7 +56,7 @@ st.pyplot()
 
 
 
-with open("https://www.dropbox.com/s/cgcyo11ua5md9r8/admin_level_8.geojson?dl=0", encoding = 'utf-8') as f:
+with open("https://www.dropbox.com/s/cgcyo11ua5md9r8/admin_level_8.geojson", encoding = 'utf-8') as f:
     a = json.load(f)
 df = pd.json_normalize(a['features'])[['id', 'name', 'geometry.coordinates']]
 df['geometry.coordinates'] = df['geometry.coordinates'].apply(lambda x: Polygon(x[0][0]))
