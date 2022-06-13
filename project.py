@@ -85,7 +85,7 @@ subregions = df_adv.filter(regex=r'^Subregion*').columns
 reg_fe = LinearRegression()
 reg_fe.fit(df_adv[["Turnout"] + list(years) + list(subregions)], df_adv["Percentage"])
 
-st.write("Результат оценивания регрессии процента "за" на явку по УИКам")
+st.write("Результат оценивания регрессии процента за В.В.Путина на явку по УИКам")
 st.write("Коэффициент влияния явки на процент голосов за Путина", reg_fe.coef_[1])
 st.write("Константа:", reg_fe.intercept_)
 
