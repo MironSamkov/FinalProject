@@ -12,6 +12,8 @@ import requests
 import geopandas
 from bs4 import BeautifulSoup
 import xml
+from pyrosm import OSM
+from pyrosm import get_data
 
 
 
@@ -55,6 +57,21 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 #, height=6
 st.pyplot()
 
+
+fp = get_data("moscow")
+osm = OSM(fp)
+boundaries = osm.get_boundaries()
+fig4 = boundaries.plot()
+st.pyplot()
+
+moscow_center = boundaries[boundaries["name"] == "Центральный административный округ"]
+bbox_geom = moscow_center['geometry'].values[0]
+osm = OSM(fp, bounding_box=bbox_geom)
+
+
+
+
+"""
 entrypoint = "https://nominatim.openstreetmap.org/search"
 params = {'state': RegionResults['Region'][0],
           'format': 'xml',
@@ -71,7 +88,7 @@ st.write(soup1.prettify())
 #RegionJson = r.json()
 #RegionPoly = geopandas.GeoDataFrame.from_features(RegionJson)
 #st.write(RegionPoly)
-"""
+
 for i in set(RegionResults['Subregion']):
     st.write(i)
     j = i
