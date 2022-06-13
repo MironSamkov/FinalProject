@@ -99,8 +99,8 @@ for i in set(moscow['Subregion']):
     net.add_node(i)
     RegionNodes = moscow.iloc[moscow.index[moscow['Subregion'] == i].tolist()]['StationID']
     ii = [i]*len(RegionNodes)
-    net.add_nodes(RegionNodes)
-    net.add_edges(zip(ii, RegionNodes))
+    net.add_nodes_from(RegionNodes)
+    net.add_edges_from(zip(ii, RegionNodes))
 
 fig, ax = plt.subplots()
 pos = nx.kamada_kawai_layout(net)
