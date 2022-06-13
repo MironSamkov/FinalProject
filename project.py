@@ -62,7 +62,8 @@ r = requests.get(entrypoint, params=params)
 
 st.write(r)
 soup = BeautifulSoup(r.text, features='xml')
-st.write(soup.prettify())
+st.write(soup.find("coordinates"))
+#st.write(soup.prettify())
 
 #RegionJson = r.json()
 #RegionPoly = geopandas.GeoDataFrame.from_features(RegionJson)
