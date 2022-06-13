@@ -14,7 +14,6 @@ from bs4 import BeautifulSoup
 import xml
 import fiona
 from sklearn.linear_model import LinearRegression
-import re
 import matplotlib.pyplot as plt
 
 
