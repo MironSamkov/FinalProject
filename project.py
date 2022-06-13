@@ -20,6 +20,7 @@ from pyvis.network import Network
 import streamlit.components.v1 as components
 
 
+
 st.title('Визуализация выборов')
 
 with open('Республика Адыгея (Адыгея).csv', encoding='utf8') as o:
