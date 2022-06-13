@@ -56,7 +56,7 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 st.pyplot()
 
 entrypoint = "https://nominatim.openstreetmap.org/search"
-params = {'state': 'Республика Адыгея (Адыгея)',
+params = {'state': RegionResults['Region'][0],
           'format': 'xml',
           'polygon_kml': 1
          }
