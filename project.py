@@ -56,10 +56,10 @@ entrypoint = "https://nominatim.openstreetmap.org/search"
 for i in set(RegionResults['Subregion']):
     st.write(i)
     j = i
-    if str(i[-2:-1])=='ая':
+    if str(i[-2:])=='ая':
         j = i[:-2]+'ий'
     st.write(j)
-    params = {'q': i,
+    params = {'q': j,
               'format': 'geojson'}
     r = requests.get(entrypoint, params=params)
     st.write(r)
