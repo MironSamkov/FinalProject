@@ -1,2 +1,9 @@
 seaborn
-altair
+streamlit
+plotly
+json
+shapely
+requests
+geopandas
+selenium
+webdriver_manager
