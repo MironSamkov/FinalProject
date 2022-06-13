@@ -62,7 +62,7 @@ r = requests.get(entrypoint, params=params)
 
 st.write(r)
 st.write(r.text)
-soup = BeautifulSoup(r.text)
+soup = BeautifulSoup(r.text, features='xml')
 st.write(soup.find("coordinates"))
 #st.write(soup.prettify())
 
