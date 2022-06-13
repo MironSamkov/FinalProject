@@ -93,7 +93,7 @@ st.write(reg_fe.intercept_)
 
 moscow = pd.read_csv('город Москва 2018.csv', encoding='utf-8')
 
-net = Network()
+net = nx.Graph()
 
 for i in set(moscow['Subregion']):
     net.add_node(i)
@@ -102,11 +102,6 @@ for i in set(moscow['Subregion']):
     net.add_nodes(RegionNodes)
     net.add_edges(zip(ii, RegionNodes))
 
-neighbor_map = net.get_adj_list()
-
-#for node in net.nodes:
-#    node['title'] += ' Neighbors:<br>' + '<br>'.join(neighbor_map[node['id']])
-#    node['value'] = len(neighbor_map[node['id']])
     
 
 fig, ax = plt.subplots()
