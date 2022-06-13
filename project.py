@@ -55,7 +55,7 @@ st.pyplot()
 
 entrypoint = "https://nominatim.openstreetmap.org/search"
 params = {'state': RegionResults['Region'][0],
-          'format': 'json',
+          'format': 'xml',
           'polygon_kml': 1
          }
 r = requests.get(entrypoint, params=params)
