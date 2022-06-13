@@ -65,7 +65,7 @@ r = requests.get(entrypoint, params=params)
 st.write(r)
 st.write(r.text)
 soup = BeautifulSoup(r.text, features='xml')
-st.write(soup.find("place").find("Polygon").find("coordinates"))
+st.write(soup.find("place").find("Polygon").find("coordinates").split(' ').split(','))
 #st.write(soup.prettify())
 
 #RegionJson = r.json()
