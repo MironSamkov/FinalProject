@@ -53,10 +53,10 @@ fig3.set_ylabel("Процент за Путина", fontsize=10)
 #, height=6
 st.pyplot()
 
-%matplotlib inline
-russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='utf-8')
+russia_adm4 = gpd.read_file("admin_level_4.shp", encoding='CP1251')
+st.write(russia_adm4.crs)
 map4 = russia_adm4.to_crs("ESRI:102012")
-map4 = map.plot()
+fig4 = map4.plot()
 st.pyplot()
 
 """
