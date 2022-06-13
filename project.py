@@ -59,6 +59,7 @@ entrypoint = "https://nominatim.openstreetmap.org/search"
 params = {'state': RegionResults['Region'][0],
           'format': 'xml',
           'polygon_kml': 1
+          'email'='msamkov@nes.ru'
          }
 r = requests.get(entrypoint, params=params)
 
