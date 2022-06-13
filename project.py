@@ -16,6 +16,7 @@ from pyrosm import OSM
 from pyrosm import get_data
 
 
+
 st.title('Визуализация выборов')
 
 with open('Республика Адыгея (Адыгея).csv', encoding='utf8') as o:
