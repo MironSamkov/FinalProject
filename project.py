@@ -20,6 +20,7 @@ from pyvis.network import Network
 import streamlit.components.v1 as components
 
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title('Визуализация аномалий на выборах')
 st.write("В данном приложении можно увидеть аномалии на президенстких выборах в России "
          "(а именно, положительную корреляцию явки и процента голосов за Путина, а также отклонения "
