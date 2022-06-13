@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
-import altair as alt
 import seaborn as sns
 import plotly.express as px
 import json
+import geojson
 import plotly.graph_objs as go
 from shapely.geometry import Polygon
 import numpy as np
@@ -15,12 +15,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from functools import lru_cache
-import arviz as az
-import csv
-
-#from lxml import etree
-import xml.etree.ElementTree
 
 
 """
